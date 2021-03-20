@@ -23,11 +23,11 @@ class Grid:
 
                 if r - 1 < 0:
                     north = None
-                if r + 1 > self.rows:
+                if r + 1 > self.rows - 1:
                     south = None
                 if c - 1 < 0:
                     west = None
-                if c > self.cols:
+                if c + 1 > self.cols - 1:
                     east = None
 
                 self.grid[r][c].north = north
@@ -40,6 +40,31 @@ class Grid:
         col = random.randint(0, self.cols - 1)
         return self.grid[row][col]
 
+    def print_grid(self):
+        # each cell is 3x3 spaces/newlines
+        maze_output = ["+---" * self.cols + "+" + "\n"]
+        for r in range(self.rows):
+            maze_row = ["|"]
+            for c in range(self.cols):
+                if self.grid[r][c].east in self.grid[r][c].links:
+                    maze_row.append("   ")
+                else:
+                    maze_row.append("   " + "|")
+
+            maze_row.append("\n")
+            maze_output.extend(maze_row)
+
+            maze_row = ["+"]
+            for c in range(self.cols):
+                if self.grid[r][c].south in self.grid[r][c].links:
+                    maze_row.append("   " + "+")
+                else:
+                    maze_row.append("---" + "+")
+            maze_row.append("\n")
+            maze_output.extend(maze_row)
+
+        for i in range(len(maze_output)):
+            print(maze_output[i], end="")
 
 class Cell:
     def __init__(self, row, col):
