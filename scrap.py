@@ -33,3 +33,30 @@ while r < self.rows:
         c += 1
 
     r += 1
+
+    def print_grid(self):
+        # each cell is 3x3 spaces/newlines
+        maze_output = ["+---" * self.cols + "+" + "\n"]
+        for r in range(self.rows):
+            maze_row = ["|"]
+            for c in range(self.cols):
+                if self.grid[r][c].east in self.grid[r][c].links:
+                    maze_row.append("   ")
+                else:
+                    maze_row.append("   " + "|")
+
+            maze_row.append("\n")
+            maze_output.extend(maze_row)
+
+            maze_row = ["+"]
+            for c in range(self.cols):
+                if self.grid[r][c].south in self.grid[r][c].links:
+                    maze_row.append("   " + "+")
+                else:
+                    maze_row.append("---" + "+")
+            maze_row.append("\n")
+            maze_output.extend(maze_row)
+
+        for i in range(len(maze_output)):
+            print(maze_output[i], end="")
+

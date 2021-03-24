@@ -40,31 +40,49 @@ class Grid:
         col = random.randint(0, self.cols - 1)
         return self.grid[row][col]
 
+    def get_cell(self, row, col):
+        return self.grid[row][col]
+
     def print_grid(self):
         # each cell is 3x3 spaces/newlines
         maze_output = ["+---" * self.cols + "+" + "\n"]
         for r in range(self.rows):
-            maze_row = ["|"]
+            top = "|"
+            bottom = "+"
+            body = "   "
             for c in range(self.cols):
-                if self.grid[r][c].east in self.grid[r][c].links:
-                    maze_row.append("   ")
-                else:
-                    maze_row.append("   " + "|")
+                cell = self.grid[r][c]
+                east = ""
+                south = ""
+                corner = "+"
 
-            maze_row.append("\n")
-            maze_output.extend(maze_row)
+                east_cell = None
+                if cell.east is not None:
+                    east_cell = self.get_cell(cell.east[0], cell.east[1])
 
-            maze_row = ["+"]
-            for c in range(self.cols):
-                if self.grid[r][c].south in self.grid[r][c].links:
-                    maze_row.append("   " + "+")
+                south_cell = None
+                if cell.south is not None:
+                    south_cell = self.get_cell(cell.south[0], cell.south[1])
+
+                if cell.exist_link(east_cell):
+                    east = " "
                 else:
-                    maze_row.append("---" + "+")
-            maze_row.append("\n")
-            maze_output.extend(maze_row)
+                    east = "|"
+
+                if cell.exist_link(south_cell):
+                    south = "   "
+                else:
+                    south = "---"
+
+                top += body + east
+                bottom += south + corner
+
+            maze_output += top + "\n"
+            maze_output += bottom + "\n"
 
         for i in range(len(maze_output)):
             print(maze_output[i], end="")
+
 
 class Cell:
     def __init__(self, row, col):
