@@ -8,6 +8,9 @@ class Grid:
         self.grid = self.prep_grid()
         self.configure_cells()
 
+    def get_size(self):
+        return self.rows * self.cols
+
     def prep_grid(self):
         grid = [[Cell(row, col) for col in range(self.cols)] for row in
                 range(self.rows)]
@@ -43,45 +46,66 @@ class Grid:
     def get_cell(self, row, col):
         return self.grid[row][col]
 
+    def get_east(self, cell):
+        east_cell = None
+        if cell.east is not None:
+            row = cell.east[0]
+            col = cell.east[1]
+            east_cell = self.get_cell(row, col)
+        return east_cell
+
+    def get_west(self, cell):
+        west_cell = None
+        if cell.west is not None:
+            row = cell.west[0]
+            col = cell.west[1]
+            west_cell = self.get_cell(row, col)
+        return west_cell
+
+    def get_north(self, cell):
+        north_cell = None
+        if cell.north is not None:
+            row = cell.north[0]
+            col = cell.north[1]
+            north_cell = self.get_cell(row, col)
+        return north_cell
+
+    def get_south(self, cell):
+        south_cell = None
+        if cell.south is not None:
+            row = cell.south[0]
+            col = cell.south[1]
+            south_cell = self.get_cell(row, col)
+        return south_cell
+
     def print_grid(self):
         # each cell is 3x3 spaces/newlines
-        maze_output = ["+---" * self.cols + "+" + "\n"]
+        maze_output = "+---" * self.cols + "+" + "\n"
         for r in range(self.rows):
             top = "|"
             bottom = "+"
-            body = "   "
             for c in range(self.cols):
                 cell = self.grid[r][c]
-                east = ""
-                south = ""
+                east = "|"
+                south = "---"
                 corner = "+"
+                body = "   "
 
-                east_cell = None
-                if cell.east is not None:
-                    east_cell = self.get_cell(cell.east[0], cell.east[1])
-
-                south_cell = None
-                if cell.south is not None:
-                    south_cell = self.get_cell(cell.south[0], cell.south[1])
+                east_cell = self.get_east(cell)
+                south_cell = self.get_south(cell)
 
                 if cell.exist_link(east_cell):
                     east = " "
-                else:
-                    east = "|"
+                top += body + east
 
                 if cell.exist_link(south_cell):
                     south = "   "
-                else:
-                    south = "---"
-
-                top += body + east
                 bottom += south + corner
 
             maze_output += top + "\n"
             maze_output += bottom + "\n"
 
-        for i in range(len(maze_output)):
-            print(maze_output[i], end="")
+        print(maze_output)
 
 
 class Cell:

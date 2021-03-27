@@ -3,30 +3,28 @@ from grid import Grid
 from grid import Cell
 
 
-class BinaryTree:
+class BinaryTree():
     # Binary tree algorithm with Northeast bias. Starts from Southwest corner.
     def generate(self, grid):
         g = grid.grid
         for r in range(grid.rows - 1, 0, -1):
             for c in range(grid.cols):
                 neighbors = []
-                print("North: ")
-                print(g[r][c].north)
-                print(g[r][c].south)
-                print(g[r][c].east)
-                print(g[r][c].west)
-                if g[r][c].north is not None:
-                    neighbors.append(g[r][c].north)
-                if g[r][c].east is not None:
-                    neighbors.append(g[r][c].east)
+                north_cell = grid.get_north(g[r][c])
+                east_cell = grid.get_east(g[r][c])
+
+                if north_cell:
+                    neighbors.append(north_cell)
+                if east_cell:
+                    neighbors.append(east_cell)
 
                 print(neighbors)
 
                 if len(neighbors) > 0:
                     index = random.randint(0, len(neighbors) - 1)
                     neighbor = neighbors[index]
-                    cell = g[neighbor[0]][neighbor[1]]
-                    g[r][c].link(cell)
-                    print(g[r][c].links)
+                    if neighbor:
+                        g[r][c].link(neighbor)
 
-        return grid
+                    neighbors.clear()
+

@@ -1,6 +1,7 @@
 from grid import Cell
 from grid import Grid
 from binary_tree import BinaryTree
+from sidewinder import Sidewinder
 
 
 def main():
@@ -13,7 +14,12 @@ def main():
     random = grid.random_cell()
     print(random)
 
-    grid = BinaryTree().generate(grid)
+    #print("Binary Tree Algorithm:")
+    #BinaryTree().generate(grid)
+    #grid.print_grid()
+
+    print("Sidewinder")
+    Sidewinder().generate(grid)
     grid.print_grid()
 
 
