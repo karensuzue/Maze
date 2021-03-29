@@ -7,7 +7,7 @@ class Sidewinder():
     def generate(self, grid):
         g = grid.grid
 
-        for r in range(grid.rows - 1, 0, -1):
+        for r in range(grid.rows - 1, -1, -1):
             run = []
             for c in range(grid.cols):
                 cell = g[r][c]

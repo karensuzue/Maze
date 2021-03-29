@@ -14,13 +14,13 @@ def main():
     random = grid.random_cell()
     print(random)
 
-    #print("Binary Tree Algorithm:")
-    #BinaryTree().generate(grid)
-    #grid.print_grid()
-
-    print("Sidewinder")
-    Sidewinder().generate(grid)
+    print("Binary Tree Algorithm:")
+    BinaryTree().generate(grid)
     grid.print_grid()
+
+    #print("Sidewinder")
+    #Sidewinder().generate(grid)
+    #grid.print_grid()
 
 
 if __name__ == '__main__':

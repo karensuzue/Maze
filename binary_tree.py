@@ -7,7 +7,7 @@ class BinaryTree():
     # Binary tree algorithm with Northeast bias. Starts from Southwest corner.
     def generate(self, grid):
         g = grid.grid
-        for r in range(grid.rows - 1, 0, -1):
+        for r in range(grid.rows - 1, -1, -1):
             for c in range(grid.cols):
                 neighbors = []
                 north_cell = grid.get_north(g[r][c])
@@ -17,8 +17,6 @@ class BinaryTree():
                     neighbors.append(north_cell)
                 if east_cell:
                     neighbors.append(east_cell)
-
-                print(neighbors)
 
                 if len(neighbors) > 0:
                     index = random.randint(0, len(neighbors) - 1)
