@@ -9,4 +9,10 @@ Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Bu
 ## Build Instructions
 
 ## Implemented Algorithms
+* Binary Tree Algorithm
+* Sidewinder Algorithm
+* Recursive Backtracker Algorithm
+* Prim's Algorithm
+* Kruskal's Algorithm
+* Wilson's Algorithm
 
