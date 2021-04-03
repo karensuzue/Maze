@@ -78,6 +78,125 @@ class Grid:
             south_cell = self.get_cell(row, col)
         return south_cell
 
+    def get_turns(self):
+        turns = 0
+        for r in range(self.rows):
+            for c in range(self.cols):
+                cell = self.grid[r][c]
+                north = self.get_north(cell)
+                south = self.get_south(cell)
+                east = self.get_east(cell)
+                west = self.get_west(cell)
+
+                if cell.exist_link(north) and not cell.exist_link(south):
+                    if cell.exist_link(east) and not cell.exist_link(west):
+                        turns += 1
+
+                    if cell.exist_link(west) and not cell.exist_link(east):
+                        turns += 1
+
+                if cell.exist_link(south) and not cell.exist_link(north):
+                    if cell.exist_link(east) and not cell.exist_link(west):
+                        turns += 1
+
+                    if cell.exist_link(west) and not cell.exist_link(east):
+                        turns += 1
+
+        return turns
+
+    def get_straightaways(self):
+        # Cell only linked to its West-East or North-South neighbors
+        straightaways = 0
+        for r in range(self.rows):
+            for c in range(self.cols):
+                cell = self.grid[r][c]
+                north = self.get_north(cell)
+                south = self.get_south(cell)
+                east = self.get_east(cell)
+                west = self.get_west(cell)
+
+                if cell.exist_link(east) and not (
+                        cell.exist_link(north) or cell.exist_link(south)):
+                    if cell.exist_link(west):
+                        straightaways += 1
+
+                if cell.exist_link(north) and not (
+                        cell.exist_link(east) or cell.exist_link(west)):
+                    if cell.exist_link(south):
+                        straightaways += 1
+
+        return straightaways
+
+    def get_tjunctions(self):
+        junctions = 0
+        for r in range(self.rows):
+            for c in range(self.cols):
+                cell = self.grid[r][c]
+                north = self.get_north(cell)
+                south = self.get_south(cell)
+                east = self.get_east(cell)
+                west = self.get_west(cell)
+
+                if cell.exist_link(north) and cell.exist_link(south):
+                    if cell.exist_link(west) and not cell.exist_link(east):
+                        junctions += 1
+
+                    if cell.exist_link(east) and not cell.exist_link(west):
+                        junctions += 1
+
+                if cell.exist_link(west) and cell.exist_link(east):
+                    if cell.exist_link(north) and not cell.exist_link(south):
+                        junctions += 1
+
+                    if cell.exist_link(south) and not cell.exist_link(north):
+                        junctions += 1
+
+        return junctions
+
+    def get_crossroads(self):
+        # Also called cross-junctions
+        crossroads = 0
+        for r in range(self.rows):
+            for c in range(self.cols):
+                cell = self.grid[r][c]
+                north = self.get_north(cell)
+                south = self.get_south(cell)
+                east = self.get_east(cell)
+                west = self.get_west(cell)
+
+                if cell.exist_link(north) and cell.exist_link(south) and cell.exist_link(east) and cell.exist_link(west):
+                    crossroads += 1
+
+        return crossroads
+
+    def get_terminals(self):
+        terminal = 0
+        for r in range(self.rows):
+            for c in range(self.cols):
+                cell = self.grid[r][c]
+                north = self.get_north(cell)
+                south = self.get_south(cell)
+                east = self.get_east(cell)
+                west = self.get_west(cell)
+
+                if cell.exist_link(north) and not (cell.exist_link(south) or cell.exist_link(east) or cell.exist_link(west)):
+                    terminal += 1
+
+                if cell.exist_link(south) and not (cell.exist_link(north) or cell.exist_link(east) or cell.exist_link(west)):
+                    terminal += 1
+
+                if cell.exist_link(east) and not (cell.exist_link(north) or cell.exist_link(south) or cell.exist_link(west)):
+                    terminal += 1
+
+                if cell.exist_link(west) and not (cell.exist_link(north) or cell.exist_link(south) or cell.exist_link(east)):
+                    terminal += 1
+
+        return terminal
+
+    def traverse_count(self):
+        count = 0
+        return count
+
     def print_grid(self):
         # each cell is 3x3 spaces/newlines
         maze_output = "+---" * self.cols + "+" + "\n"
@@ -106,6 +225,12 @@ class Grid:
             maze_output += bottom + "\n"
 
         print(maze_output)
+
+    def maze_bit_map(self):
+        map = [[0 for col in range(self.cols)] for row in
+                range(self.rows)]
+
+        return map
 
 
 class Cell:
