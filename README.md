@@ -1,2 +1,2 @@
-# Maze
-Junior I.S project at the College of Wooster. Referenced Jamis Buck's Mazes for Programmers. 
+# Maze Generator
+Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Buck's Mazes for Programmers. 
