@@ -1,6 +1,6 @@
 import pygame
 from GUI_grid import Grid
-from binary_tree import BinaryTree
+from algorithms.binary_tree import BinaryTree
 
 def main():
     pygame.init()

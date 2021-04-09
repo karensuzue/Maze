@@ -1,7 +1,8 @@
-from grid import Cell
 from grid import Grid
-from binary_tree import BinaryTree
-from sidewinder import Sidewinder
+from algorithms.binary_tree import BinaryTree
+from algorithms.sidewinder import Sidewinder
+from algorithms.prims import Prim
+from algorithms.wilsons import Wilson
 
 
 def main():
@@ -16,8 +17,12 @@ def main():
     grid = Grid(5, 5)
     # BinaryTree().generate(grid)
     # print("Binary Tree Algorithm:")
-    Sidewinder().generate(grid)
-    print("Sidewinder Algorithm: ")
+    # Sidewinder().generate(grid)
+    # print("Sidewinder Algorithm: ")
+    #Prim().generate(grid)
+    #print("Prim's Algorithm: ")
+    Wilson().generate(grid)
+    print("Wilson's Algorithm: ")
     grid.print_grid()
     print("Total amount of cells", grid.get_size())
     print("Straightaways", grid.get_straightaways())

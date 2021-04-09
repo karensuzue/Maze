@@ -2,6 +2,6 @@ import random
 from grid import Grid
 from grid import Cell
 
-class Prim():
+class Kruskal():
     def generate(self, grid):
         pass

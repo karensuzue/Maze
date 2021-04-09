@@ -197,6 +197,27 @@ class Grid:
         count = 0
         return count
 
+    def get_neighbors(self, cell):
+        north = self.get_north(cell)
+        south = self.get_south(cell)
+        east = self.get_east(cell)
+        west = self.get_west(cell)
+
+        neighbors = []
+        if north is not None:
+            neighbors.append(north)
+
+        if south is not None:
+            neighbors.append(south)
+
+        if east is not None:
+            neighbors.append(east)
+
+        if west is not None:
+            neighbors.append(west)
+
+        return neighbors
+
     def print_grid(self):
         # each cell is 3x3 spaces/newlines
         maze_output = "+---" * self.cols + "+" + "\n"
