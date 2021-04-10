@@ -218,6 +218,21 @@ class Grid:
 
         return neighbors
 
+    def get_edges(self):
+        edges = []
+        for r in range(self.rows):
+            for c in range(self.cols):
+                cell = self.grid[r][c]
+                east = self.get_east(cell)
+                south = self.get_south(cell)
+
+                if east is not None:
+                    edges.append((cell, east))
+
+                if south is not None:
+                    edges.append((cell, south))
+        return edges
+
     def print_grid(self):
         # each cell is 3x3 spaces/newlines
         maze_output = "+---" * self.cols + "+" + "\n"
