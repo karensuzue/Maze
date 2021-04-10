@@ -15,7 +15,7 @@ def main():
 
     # print("Average straightaways ", straightaways//100)
 
-    grid = Grid(5, 5)
+    grid = Grid(20, 20)
 
     # BinaryTree().generate(grid)
     # print("Binary Tree Algorithm:")

@@ -5,10 +5,9 @@ from grid import Cell
 
 class Subset():
     # Wrap cells in Subset class, gives them ability to track subset IDs
-    def __init__(self, cell, id):
+    def __init__(self, cell):
         self.cells = [cell]
         self.size = 1
-        self.id = id  # Subset ID changes when they're merged
 
 class Kruskal():
     def __init__(self, grid):
@@ -18,16 +17,18 @@ class Kruskal():
         self.find_cells = {}  # Maps cells to their subset IDs
 
         # Assign subset ID to each cell
-        counter = 0
         for r in range(grid.rows):
             for c in range(grid.cols):
                 cell = grid.grid[r][c]
                 # Subset's unique ID is counter
-                subset = Subset(cell, counter)
+                subset = Subset(cell)
 
                 self.find_subset[cell] = subset
-                self.find_cells[subset] = subset.cells # or cell
-                counter += 1
+                # Instead of making a new array, pointer? to the cells array
+                # already initialized in subset, so performance is faster
+                # When appending cells (like below) they will be added to
+                # this subset's cells array
+                self.find_cells[subset] = subset.cells
 
     def can_merge(self, left, right):
         if self.find_subset[left] != self.find_subset[right]:
@@ -41,11 +42,12 @@ class Kruskal():
         winner = self.find_subset[left]
         loser = self.find_subset[right]
 
+        # Move contents of loser set into winner set
         for cell in loser.cells:
-            winner.cells.append(cell)
+            #winner.cells.append(cell)
             self.find_cells[winner].append(cell)
             self.find_subset[cell] = winner
-
+        # Pop loser set
         self.find_cells.pop(loser)
 
     def generate(self, grid):
