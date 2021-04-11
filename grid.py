@@ -286,6 +286,8 @@ class Cell:
 
         # Linked/joined cells
         self.links = {}
+        
+        self.visited = False
 
     def link(self, cell):
         """
