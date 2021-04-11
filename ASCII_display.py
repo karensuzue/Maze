@@ -4,6 +4,7 @@ from algorithms.sidewinder import Sidewinder
 from algorithms.prims import Prim
 from algorithms.kruskals import Kruskal
 from algorithms.wilsons import Wilson
+from algorithms.recursive import Recursive
 
 
 def main():
@@ -29,9 +30,12 @@ def main():
     # Wilson().generate(grid)
     # print("Wilson's Algorithm: ")
 
-    kruskal = Kruskal(grid)
-    kruskal.generate(grid)
-    print("Kruskal's Algorithm: ")
+    # kruskal = Kruskal(grid)
+    # kruskal.generate(grid)
+    # print("Kruskal's Algorithm: ")
+
+    Recursive().generate(grid)
+    print("Recursive Backtracker Algorithm: ")
 
     grid.print_grid()
     print("Total amount of cells", grid.get_size())

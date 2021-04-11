@@ -37,7 +37,6 @@ class Kruskal():
 
     def merge(self, left, right):
         left.link(right)
-        right.link(left)
 
         winner = self.find_subset[left]
         loser = self.find_subset[right]
