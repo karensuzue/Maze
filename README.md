@@ -3,7 +3,7 @@ Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Bu
 
 ## Built with
 * Python
-* PyGame
+* Python Imaging Library
 * Tkinter
 
 ## Build Instructions
