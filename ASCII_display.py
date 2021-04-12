@@ -6,7 +6,6 @@ from algorithms.kruskals import Kruskal
 from algorithms.wilsons import Wilson
 from algorithms.recursive import Recursive
 
-
 def main():
     # straightaways = 0
     # for i in range(100):
@@ -21,8 +20,8 @@ def main():
     # BinaryTree().generate(grid)
     # print("Binary Tree Algorithm:")
 
-    # Sidewinder().generate(grid)
-    # print("Sidewinder Algorithm: ")
+    Sidewinder().generate(grid)
+    print("Sidewinder Algorithm: ")
 
     # Prim().generate(grid)
     # print("Prim's Algorithm: ")
@@ -34,8 +33,8 @@ def main():
     # kruskal.generate(grid)
     # print("Kruskal's Algorithm: ")
 
-    Recursive().generate(grid)
-    print("Recursive Backtracker Algorithm: ")
+    # Recursive().generate(grid)
+    # print("Recursive Backtracker Algorithm: ")
 
     grid.print_grid()
     print("Total amount of cells", grid.get_size())
