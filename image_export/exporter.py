@@ -11,7 +11,7 @@ from algorithms.wilsons import Wilson
 from algorithms.recursive import Recursive
 
 def export():
-    grid = Grid(10, 10)
+    grid = Grid(30, 20)
 
     # BinaryTree().generate(grid)
 

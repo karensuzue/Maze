@@ -15,7 +15,8 @@ class Dijkstra():
         self.distances = None
 
     def solve(self, grid):
-        start = grid.grid[grid.rows - 1][0]
+        # Start from the middle of the maze
+        start = grid.grid[grid.rows // 2 - 1][grid.cols // 2 - 1]
         start.distance = 1
         self.distances = Distance(start)
         frontier = [start]
@@ -45,6 +46,3 @@ class Dijkstra():
 
         else:
             return None
-
-    def print_path(self):
-        pass
