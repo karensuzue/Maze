@@ -288,6 +288,7 @@ class Cell:
         self.links = {}
         
         self.visited = False
+        self.distance = 0
 
     def link(self, cell):
         """

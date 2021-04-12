@@ -15,19 +15,20 @@ def export():
 
     # BinaryTree().generate(grid)
 
-    Sidewinder().generate(grid)
+    # Sidewinder().generate(grid)
 
     # Prim().generate(grid)
 
     # Wilson().generate(grid)
 
-    # kruskal = Kruskal(grid)
-    # kruskal.generate(grid)
+    kruskal = Kruskal(grid)
+    kruskal.generate(grid)
 
     # Recursive().generate(grid)
 
     render = ToPNG(grid, 20)
     image = render.render()
+    image2 = render.render_color()
 
 if __name__ == '__main__':
     export()
