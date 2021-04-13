@@ -1,6 +1,14 @@
 # Maze Generator
 Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Buck's Mazes for Programmers. 
 
+## To do list
+* Build GUI with Tkinter, display buttons for each algorithm with generated maze image in the middle
+* Fix Prim's Algorithm
+
+## Preliminary Software Details
+* Run `ASCII_display.py` for ASCII printed maze/version of the software.
+* `image_export/exporter.py` for rendering mazes as images
+
 ## Built with
 * Python
 * Python Imaging Library
