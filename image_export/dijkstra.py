@@ -14,9 +14,8 @@ class Dijkstra():
     def __init__(self):
         self.distances = None
 
-    def solve(self, grid):
-        # Start from the middle of the maze
-        start = grid.grid[grid.rows // 2 - 1][grid.cols // 2 - 1]
+    def solve(self, grid, row, col):
+        start = grid.grid[row][col]
         start.distance = 1
         self.distances = Distance(start)
         frontier = [start]

@@ -13,7 +13,7 @@ from algorithms.recursive import Recursive
 def export():
     grid = Grid(30, 20)
 
-    # BinaryTree().generate(grid)
+    BinaryTree().generate(grid)
 
     # Sidewinder().generate(grid)
 
@@ -21,14 +21,20 @@ def export():
 
     # Wilson().generate(grid)
 
-    kruskal = Kruskal(grid)
-    kruskal.generate(grid)
+    # kruskal = Kruskal(grid)
+    # kruskal.generate(grid)
 
     # Recursive().generate(grid)
 
     render = ToPNG(grid, 20)
-    image = render.render()
-    image2 = render.render_color()
+    # image = render.render()
+    # image2 = render.render_color()
+
+    path = render.render_path()
+    print(path)
+    for i in range(len(path)):
+        print(path[i].distance)
+
 
 if __name__ == '__main__':
     export()

@@ -171,6 +171,7 @@ class Grid:
 
     def get_terminals(self):
         terminal = 0
+        cells = []
         for r in range(self.rows):
             for c in range(self.cols):
                 cell = self.grid[r][c]
@@ -181,17 +182,21 @@ class Grid:
 
                 if cell.exist_link(north) and not (cell.exist_link(south) or cell.exist_link(east) or cell.exist_link(west)):
                     terminal += 1
+                    cells.append(cell)
 
                 if cell.exist_link(south) and not (cell.exist_link(north) or cell.exist_link(east) or cell.exist_link(west)):
                     terminal += 1
+                    cells.append(cell)
 
                 if cell.exist_link(east) and not (cell.exist_link(north) or cell.exist_link(south) or cell.exist_link(west)):
                     terminal += 1
+                    cells.append(cell)
 
                 if cell.exist_link(west) and not (cell.exist_link(north) or cell.exist_link(south) or cell.exist_link(east)):
                     terminal += 1
+                    cells.append(cell)
 
-        return terminal
+        return (terminal, cells)
 
     def traverse_count(self):
         count = 0

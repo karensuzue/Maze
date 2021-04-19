@@ -53,17 +53,22 @@ class GUI:
             Radiobutton(self.menu, text=text, variable=self.v_algorithm,
                         value=value).pack()
 
-        # Plain maze or colored bias map
+        # Plain maze, colored bias map, or solution highlighted
         self.map_label = Label(self.menu, text="Maze rendering options:")
         self.v_render = IntVar()
         self.v_render.set(1)
         self.plain_option = Radiobutton(self.menu, text="Plain Maze",
                                         variable=self.v_render, value=1)
+        self.solution_option = Radiobutton(self.menu,
+                                           text="Maze with Solution Path",
+                                           variable=self.v_render, value=2)
         self.color_option = Radiobutton(self.menu, text="Colored Maze",
-                                        variable=self.v_render, value=2)
+                                        variable=self.v_render, value=3)
+
 
         self.map_label.pack()
         self.plain_option.pack()
+        self.solution_option.pack()
         self.color_option.pack()
 
         # Generate button
@@ -71,16 +76,31 @@ class GUI:
                                       command=self.generate)
         self.generate_button.pack()
 
+        # Maze details button
+        self.details_button = Button(self.menu, text="Maze Attributes", command=self.get_attributes)
+        self.details_button.pack()
+
         # Reset button
         self.reset_button = Button(self.menu, text="Reset", command=self.reset)
         self.reset_button.pack()
 
+    def get_attributes(self):
+        # New window
+        new_window = Toplevel(self.master)
+        new_window.title("Maze Attributes")
+
+
     def image_load(self):
-        if self.v_render.get() == 2:
-            image = Image.open("maze-colored.png")
-            return ImageTk.PhotoImage(image)
-        else:
+        if self.v_render.get() == 1:
             image = Image.open("maze.png")
+            return ImageTk.PhotoImage(image)
+
+        if self.v_render.get() == 2:
+            image = Image.open("maze-solution.png")
+            return ImageTk.PhotoImage(image)
+
+        if self.v_render.get() == 3:
+            image = Image.open("maze-colored.png")
             return ImageTk.PhotoImage(image)
 
     def reset(self):
@@ -118,6 +138,9 @@ class GUI:
             render.render()
 
         if self.v_render.get() == 2:
+            render.render_path()
+
+        if self.v_render.get() == 3:
             render.render_color()
 
         # New window to display generated maze
@@ -128,7 +151,6 @@ class GUI:
         img = self.image_load()
         img_label = Label(new_window, image=img)
         img_label.image = img
-        img_label.place(x=10, y=10)
         img_label.pack()
 
 

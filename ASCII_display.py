@@ -6,6 +6,8 @@ from algorithms.kruskals import Kruskal
 from algorithms.wilsons import Wilson
 from algorithms.recursive import Recursive
 
+from image_export.to_png import ToPNG
+
 def main():
     # straightaways = 0
     # for i in range(100):
@@ -15,13 +17,13 @@ def main():
 
     # print("Average straightaways ", straightaways//100)
 
-    grid = Grid(10, 10)
+    grid = Grid(5, 5)
 
     # BinaryTree().generate(grid)
     # print("Binary Tree Algorithm:")
 
-    Sidewinder().generate(grid)
-    print("Sidewinder Algorithm: ")
+    # Sidewinder().generate(grid)
+    # print("Sidewinder Algorithm: ")
 
     # Prim().generate(grid)
     # print("Prim's Algorithm: ")
@@ -33,8 +35,8 @@ def main():
     # kruskal.generate(grid)
     # print("Kruskal's Algorithm: ")
 
-    # Recursive().generate(grid)
-    # print("Recursive Backtracker Algorithm: ")
+    Recursive().generate(grid)
+    print("Recursive Backtracker Algorithm: ")
 
     grid.print_grid()
     print("Total amount of cells", grid.get_size())
@@ -42,8 +44,15 @@ def main():
     print("Turns", grid.get_turns())
     print("Crossroads", grid.get_crossroads())
     print("T-junctions", grid.get_tjunctions())
-    print("Terminals", grid.get_terminals())
+    print("Terminals", grid.get_terminals()[0])
+    print("Terminal cells", grid.get_terminals()[1])
+    print("Number of terminal cells", len(grid.get_terminals()[1]))
 
+    render = ToPNG(grid, 20)
+    path = render.render_path()
+    print(path)
+    for i in range(len(path)):
+        print(path[i].distance)
 
 if __name__ == '__main__':
     main()
