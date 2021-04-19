@@ -28,6 +28,7 @@ Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Bu
 ### ASCII Printing
 ### Render as Image
 ![Image](https://github.com/karensuzue/Maze/blob/main/image_export/maze.png)
+### Render with Solution Path
 ### Colored Bias Map
 ![Image](https://github.com/karensuzue/Maze/blob/main/image_export/maze-colored.png)
 
