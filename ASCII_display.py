@@ -48,11 +48,7 @@ def main():
     print("Terminal cells", grid.get_terminals()[1])
     print("Number of terminal cells", len(grid.get_terminals()[1]))
 
-    render = ToPNG(grid, 20)
-    path = render.render_path()
-    print(path)
-    for i in range(len(path)):
-        print(path[i].distance)
+    
 
 if __name__ == '__main__':
     main()
