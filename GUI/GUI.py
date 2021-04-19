@@ -89,6 +89,167 @@ class GUI:
         new_window = Toplevel(self.master)
         new_window.title("Maze Attributes")
 
+        Label(new_window, width=40, pady=1).pack()
+
+        label1 = Label(new_window, text="Maze Attributes:", width=40)
+        label1.pack()
+
+        size = self.grid.get_size()
+        straightaways = self.grid.get_straightaways()
+        turns = self.grid.get_turns()
+        crossroads = self.grid.get_crossroads()
+        tjunctions = self.grid.get_tjunctions()
+        terminals = self.grid.get_terminals()
+
+        Label(new_window, text="Total number of cells: " + str(size), width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="Straightaways: " + str(straightaways), width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="Turns: " + str(turns), width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="Crossroads: " + str(crossroads), width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="T-junctions: " + str(tjunctions),
+              width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="Terminals " + str(terminals),
+              width=40, anchor="w", padx=10).pack()
+
+        Label(new_window, width=40, pady=1).pack()
+
+        label2 = Label(new_window, text="Solution Path Attributes:")
+        label2.pack()
+        render = ToPNG(self.grid, CELL_SIZE)
+        solution_path = render.render_path()
+        straightaways_solution = self.get_straightaways_solution(solution_path)
+        turns_solution = self.get_turns_solution(solution_path)
+        crossroads_solution = self.get_crossroads_solution(solution_path)
+        tjunctions_solution = self.get_tjunctions_solution(solution_path)
+        terminals_solution = self.get_terminals_solution(solution_path)
+
+        Label(new_window, text="Straightaways: " + str(straightaways_solution), width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="Turns: " + str(turns_solution),
+              width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="Crossroads: " + str(crossroads_solution),
+              width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="T-junctions: " + str(tjunctions_solution),
+              width=40, anchor="w", padx=10).pack()
+        Label(new_window, text="Terminals: " + str(terminals_solution),
+              width=40, anchor="w", padx=10).pack()
+        Label(new_window, width=40, pady=1).pack()
+
+
+    def get_straightaways_solution(self, arr):
+        straightaways = 0
+        for i in range(len(arr)):
+            cell = arr[i]
+            north = self.grid.get_north(cell)
+            south = self.grid.get_south(cell)
+            east = self.grid.get_east(cell)
+            west = self.grid.get_west(cell)
+
+            if cell.exist_link(east) and not (
+                    cell.exist_link(north) or cell.exist_link(south)):
+                if cell.exist_link(west):
+                    straightaways += 1
+
+            if cell.exist_link(north) and not (
+                    cell.exist_link(east) or cell.exist_link(west)):
+                if cell.exist_link(south):
+                    straightaways += 1
+
+        return straightaways
+
+    def get_turns_solution(self, arr):
+        turns = 0
+        for i in range(len(arr)):
+            cell = arr[i]
+            north = self.grid.get_north(cell)
+            south = self.grid.get_south(cell)
+            east = self.grid.get_east(cell)
+            west = self.grid.get_west(cell)
+
+            if cell.exist_link(north) and not cell.exist_link(south):
+                if cell.exist_link(east) and not cell.exist_link(west):
+                    turns += 1
+
+                if cell.exist_link(west) and not cell.exist_link(east):
+                    turns += 1
+
+            if cell.exist_link(south) and not cell.exist_link(north):
+                if cell.exist_link(east) and not cell.exist_link(west):
+                    turns += 1
+
+                if cell.exist_link(west) and not cell.exist_link(east):
+                    turns += 1
+
+        return turns
+
+    def get_crossroads_solution(self, arr):
+        crossroads = 0
+        for i in range(len(arr)):
+            cell = arr[i]
+            north = self.grid.get_north(cell)
+            south = self.grid.get_south(cell)
+            east = self.grid.get_east(cell)
+            west = self.grid.get_west(cell)
+
+            if cell.exist_link(north) and cell.exist_link(
+                    south) and cell.exist_link(east) and cell.exist_link(west):
+                crossroads += 1
+
+        return crossroads
+
+    def get_tjunctions_solution(self, arr):
+        junctions = 0
+        for i in range(len(arr)):
+            cell = arr[i]
+            north = self.grid.get_north(cell)
+            south = self.grid.get_south(cell)
+            east = self.grid.get_east(cell)
+            west = self.grid.get_west(cell)
+
+            if cell.exist_link(north) and cell.exist_link(south):
+                if cell.exist_link(west) and not cell.exist_link(east):
+                    junctions += 1
+
+                if cell.exist_link(east) and not cell.exist_link(west):
+                    junctions += 1
+
+            if cell.exist_link(west) and cell.exist_link(east):
+                if cell.exist_link(north) and not cell.exist_link(south):
+                    junctions += 1
+
+                if cell.exist_link(south) and not cell.exist_link(north):
+                    junctions += 1
+
+        return junctions
+
+    def get_terminals_solution(self, arr):
+        terminal = 0
+        for i in range(len(arr)):
+            cell = arr[i]
+            north = self.grid.get_north(cell)
+            south = self.grid.get_south(cell)
+            east = self.grid.get_east(cell)
+            west = self.grid.get_west(cell)
+
+            if cell.exist_link(north) and not (
+                    cell.exist_link(south) or cell.exist_link(
+                    east) or cell.exist_link(west)):
+                terminal += 1
+
+            if cell.exist_link(south) and not (
+                    cell.exist_link(north) or cell.exist_link(
+                    east) or cell.exist_link(west)):
+                terminal += 1
+
+            if cell.exist_link(east) and not (
+                    cell.exist_link(north) or cell.exist_link(
+                    south) or cell.exist_link(west)):
+                terminal += 1
+
+            if cell.exist_link(west) and not (
+                    cell.exist_link(north) or cell.exist_link(
+                    south) or cell.exist_link(east)):
+                terminal += 1
+
+        return terminal
 
     def image_load(self):
         if self.v_render.get() == 1:
@@ -127,11 +288,7 @@ class GUI:
         if self.v_algorithm.get() == 6:
             Wilson().generate(self.grid)
 
-        print(self.v_algorithm.get())
-        print(self.v_render.get())
-
         # Render choice
-        print(self.grid)
         render = ToPNG(self.grid, CELL_SIZE)
 
         if self.v_render.get() == 1:
