@@ -2,7 +2,6 @@
 Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Buck's Mazes for Programmers. 
 
 ## To do list
-* Build GUI with Tkinter, display buttons for each algorithm with generated maze image in the middle
 * Fix Prim's Algorithm
 
 ## Preliminary Software Details
@@ -15,6 +14,7 @@ Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Bu
 * Tkinter
 
 ## Build Instructions
+* Run `GUI/GUI.py`
 
 ## Implemented Algorithms
 * Binary Tree Algorithm
