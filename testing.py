@@ -12,8 +12,132 @@ class TestMethods():
     def __init__(self, grid):
         self.grid = grid
 
-    # Average attributes
-    
+    # Average maze attributes
+    def average_straightaways(self):
+        straightaways = 0
+        for i in range(50):
+            g = Grid(30, 20)
+
+            BinaryTree().generate(g)
+
+            # Sidewinder().generate(g)
+
+            # Prim().generate(g)
+
+            # kruskal = Kruskal(g)
+            # kruskal.generate(g)
+
+            # Wilson().generate(g)
+
+            # Recursive().generate(g)
+
+            straightaways += g.get_straightaways()
+
+        return straightaways // 50
+
+    def average_turns(self):
+        turns = 0
+        for i in range(50):
+            g = Grid(30, 20)
+
+            BinaryTree().generate(g)
+
+            # Sidewinder().generate(g)
+
+            # Prim().generate(g)
+
+            # kruskal = Kruskal(g)
+            # kruskal.generate(g)
+
+            # Wilson().generate(g)
+
+            # Recursive().generate(g)
+
+            turns += g.get_turns()
+
+        return turns // 50
+
+    def average_crossroads(self):
+        crossroads = 0
+        for i in range(50):
+            g = Grid(30, 20)
+
+            BinaryTree().generate(g)
+
+            # Sidewinder().generate(g)
+
+            # Prim().generate(g)
+
+            # kruskal = Kruskal(g)
+            # kruskal.generate(g)
+
+            # Wilson().generate(g)
+
+            # Recursive().generate(g)
+
+            crossroads += g.get_crossroads()
+
+        return crossroads // 50
+
+    def average_tjunctions(self):
+        tjunctions = 0
+        for i in range(50):
+            g = Grid(30, 20)
+
+            BinaryTree().generate(g)
+
+            # Sidewinder().generate(g)
+
+            # Prim().generate(g)
+
+            # kruskal = Kruskal(g)
+            # kruskal.generate(g)
+
+            # Wilson().generate(g)
+
+            # Recursive().generate(g)
+
+            tjunctions += g.get_tjunctions()
+
+        return tjunctions // 50
+
+    def average_terminals(self):
+        terminals = 0
+        for i in range(50):
+            g = Grid(30, 20)
+
+            BinaryTree().generate(g)
+
+            # Sidewinder().generate(g)
+
+            # Prim().generate(g)
+
+            # kruskal = Kruskal(g)
+            # kruskal.generate(g)
+
+            # Wilson().generate(g)
+
+            # Recursive().generate(g)
+
+            terminals += g.get_terminals()
+
+        return terminals // 50
+
+    # Average solution attributes
+    def avg_solution_straightaways(self):
+        pass
+
+    def avg_solution_turns(self):
+        pass
+
+    def avg_solution_crossroads(self):
+        pass
+
+    def avg_solution_tjunctions(self):
+        pass
+
+    def avg_solution_terminals(self):
+        pass
 
     # Average timing methods
     def average_binary_time(self):
@@ -87,6 +211,8 @@ class TestMethods():
 
 if __name__ == '__main__':
     grid = Grid(30, 20)
+
     test = TestMethods(grid)
     print("Average Binary Time", test.average_binary_time())
     print("Average Sidewinder Time", test.average_sidewinder_time())
+    print("Average Straightaways", test.average_straightaways())
