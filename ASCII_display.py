@@ -17,8 +17,8 @@ def main():
     # Sidewinder().generate(grid)
     # print("Sidewinder Algorithm: ")
 
-    # Prim().generate(grid)
-    # print("Prim's Algorithm: ")
+    Prim().generate(grid)
+    print("Prim's Algorithm: ")
 
     # Wilson().generate(grid)
     # print("Wilson's Algorithm: ")
@@ -27,8 +27,8 @@ def main():
     # kruskal.generate(grid)
     # print("Kruskal's Algorithm: ")
 
-    Recursive().generate(grid)
-    print("Recursive Backtracker Algorithm: ")
+    # Recursive().generate(grid)
+    # print("Recursive Backtracker Algorithm: ")
 
     grid.print_grid()
     print("Total amount of cells", grid.get_size())
@@ -36,9 +36,9 @@ def main():
     print("Turns", grid.get_turns())
     print("Crossroads", grid.get_crossroads())
     print("T-junctions", grid.get_tjunctions())
-    print("Terminals", grid.get_terminals()[0])
-    print("Terminal cells", grid.get_terminals()[1])
-    print("Number of terminal cells", len(grid.get_terminals()[1]))
+    print("Terminals", grid.get_terminals())
+    # print("Terminal cells", grid.get_terminals()[1])
+    # print("Number of terminal cells", len(grid.get_terminals()[1]))
 
 
 
