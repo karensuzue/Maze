@@ -3,6 +3,31 @@ from grid import Grid
 from grid import Cell
 
 class Prim():
+    def find_visited_neighbors(self, cell, grid):
+        neighbors = []
+        north = grid.get_north(cell)
+        south = grid.get_south(cell)
+        east = grid.get_east(cell)
+        west = grid.get_west(cell)
+
+        if north is not None:
+            if north.visited:
+                neighbors.append(north)
+
+        if south is not None:
+            if south.visited:
+                neighbors.append(south)
+
+        if east is not None:
+            if east.visited:
+                neighbors.append(east)
+
+        if west is not None:
+            if west.visited:
+                neighbors.append(west)
+
+        return neighbors
+
     def find_unvisited_neighbors(self, cell, grid):
         # Find available neighbors
         neighbors = []
@@ -11,17 +36,21 @@ class Prim():
         east = grid.get_east(cell)
         west = grid.get_west(cell)
 
-        if not cell.exist_link(north) and north is not None:
-            neighbors.append(north)
+        if north is not None:
+            if not north.visited:
+                neighbors.append(north)
 
-        if not cell.exist_link(south) and south is not None:
-            neighbors.append(south)
+        if south is not None:
+            if not south.visited:
+                neighbors.append(south)
 
-        if not cell.exist_link(east) and east is not None:
-            neighbors.append(east)
+        if east is not None:
+            if not east.visited:
+                neighbors.append(east)
 
-        if not cell.exist_link(west) and west is not None:
-            neighbors.append(west)
+        if west is not None:
+            if not west.visited:
+                neighbors.append(west)
 
         return neighbors
 
@@ -47,80 +76,35 @@ class Prim():
             cell = random.choice(path)
             cell.visited = True
 
-            visited_neighbors =
-            available_neighbors = self.find_neighbors(cell, grid)
-            if len(available_neighbors) > 0:
-                neighbor = random.choice(available_neighbors)
+            visited_neighbors = self.find_visited_neighbors(cell, grid)
+            unvisited_neighbors = self.find_unvisited_neighbors(cell, grid)
+
+            if len(visited_neighbors) > 0:
+                neighbor = random.choice(visited_neighbors)
                 cell.link(neighbor)
+                path.remove(cell)
 
-                neighbors_of_neighbor = self.find_neighbors(neighbor, grid)
-                for i in range(len(neighbors_of_neighbor)):
-                    if neighbors_of_neighbor[i] not in path:
-                            path.append(neighbors_of_neighbor[i])
-
-
-            path.remove(cell)
-
-
-
-
-
-
-
-
-
-    def generate3(self, grid):
-        # Arbitrary starting cell
-        first = grid.random_cell()
-        frontier = [first]
-        maze = []
-
-        while len(frontier) > 0:
-            cell = random.choice(frontier)
-            maze.append(cell)
-            frontier.remove(cell)
-            available_neighbors = self.find_neighbors(cell, grid)
-            print(available_neighbors)
-
-            # Avoid duplicates in frontier set
-            for i in range(len(available_neighbors)):
-                if available_neighbors[i] not in (frontier or maze):
-                    frontier.append(available_neighbors[i])
-
-            if len(available_neighbors) > 0:
-                for i in range(len(maze)):
-                    if maze[i] in available_neighbors:
-                        cell.link(maze[i])
-                        break
-
-
+            path.extend(unvisited_neighbors)
 
 
     def generate2(self, grid):
-        # Arbitrary starting cell
         first = grid.random_cell()
-        frontier = [first]
-        maze = []
+        walls = [first]
+        while len(walls) > 0:
+            cell = random.choice(walls)
+            cell.visited = True
 
-        # Assign random costs to each cell (not edges)
-        costs = {}
-        for r in range(grid.rows):
-            for c in range(grid.cols):
-                cell = grid.grid[r][c]
-                costs[cell] = random.randint(1, 100)
+            neighbors = grid.get_neighbors(cell)
+            walls.extend(neighbors)
 
-        while len(frontier) > 0:
-            cell = self.min_element(frontier, costs)  # Cell with minimum cost
-            maze.append(cell)
-            available_neighbors = self.find_neighbors(cell, grid)
+            if len(neighbors) > 0:
+                neighbor = random.choice(neighbors)
+                if not neighbor.visited:
+                    cell.link(neighbor)
+                    neighbor.visited = True
+                    walls.remove(neighbor)
+                    walls.extend(grid.get_neighbors(neighbor))
 
-            # Avoid duplicates in frontier set
-            for i in range(len(available_neighbors)):
-                if available_neighbors[i] not in (frontier and maze):
-                    frontier.append(available_neighbors[i])
+                else:
+                    walls.remove(neighbor)
 
-            for i in range(len(maze)):
-                if maze[i] in available_neighbors:
-                    cell.link(maze[i])
-                    frontier.remove(cell)
-            print(frontier)

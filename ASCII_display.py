@@ -17,7 +17,7 @@ def main():
     # Sidewinder().generate(grid)
     # print("Sidewinder Algorithm: ")
 
-    Prim().generate(grid)
+    Prim().generate2(grid)
     print("Prim's Algorithm: ")
 
     # Wilson().generate(grid)
