@@ -2,7 +2,7 @@
 Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Buck's Mazes for Programmers. 
 
 ## To do list
-* Fix Prim's Algorithm
+* Remove Prim's Algorithm from GUI
 
 ## Preliminary Software Details
 * Run `ASCII_display.py` for ASCII printed maze/version of the software.
