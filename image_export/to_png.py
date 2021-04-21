@@ -198,3 +198,25 @@ class ToPNG():
 
         canvas.save("maze-colored.png")
         return canvas
+
+    def render_path2(self):
+        # Renders the solution path
+
+        # Start solving from the southwest corner
+        distance_map = Dijkstra()
+        distance_map.solve(self.grid, self.grid.rows - 1, 0)
+
+        # Walk backwards from end goal, which is northeast corner
+        goal = self.grid.grid[0][self.grid.cols - 1]
+
+        # Find solution path
+        solution_path = [goal]
+        temp = goal
+        while temp.distance is not 1:
+            links = temp.links
+            for cell in links:
+                if cell.distance == temp.distance - 1:
+                    solution_path.append(cell)
+                    temp = cell
+
+        return solution_path

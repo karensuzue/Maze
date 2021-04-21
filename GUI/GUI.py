@@ -122,6 +122,7 @@ class GUI:
         tjunctions_solution = self.get_tjunctions_solution(solution_path)
         terminals_solution = self.get_terminals_solution(solution_path)
 
+        Label(new_window, text="Number of cells: " + str(len(solution_path)), width=40, anchor="w", padx=10).pack()
         Label(new_window, text="Straightaways: " + str(straightaways_solution), width=40, anchor="w", padx=10).pack()
         Label(new_window, text="Turns: " + str(turns_solution),
               width=40, anchor="w", padx=10).pack()
