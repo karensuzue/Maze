@@ -432,6 +432,36 @@ class TestMethods():
         Recursive().generate(self.grid)
         return time.time() - start_time
 
+    # Count number of cells in solution path
+    def avg_cell_solution(self):
+        cells = 0
+        for i in range(50):
+            g = Grid(30, 20)
+
+            # BinaryTree().generate(g)
+
+            # Sidewinder().generate(g)
+
+            # Prim().generate(g)
+
+            # kruskal = Kruskal(g)
+            # kruskal.generate(g)
+
+            Wilson().generate(g)
+
+            # Recursive().generate(g)
+
+            render = ToPNG(g, 5)
+            path = render.render_path2()
+            cells += len(path)
+
+        return cells / 50
+
+    def avg_run(self):
+        global_length = 0
+        local_length = 0
+        run = 0
+
 
 if __name__ == '__main__':
     grid = Grid(30, 20)
@@ -443,14 +473,14 @@ if __name__ == '__main__':
     # print("Average Recursive Time: ", test.average_recursive_time())
     # print("Average Wilson Time: ", test.average_wilson_time())
 
-    # print("Binary Tree Solution Path")
-    # print("Sidewinder Solution Path")
-    # print("Kruskal Solution Path")
-    # print("Recursive Solution Path")
-    print("Wilson Solution Path")
+    # print("AVERAGE Binary Tree Solution Path Cells: ", test.avg_cell_solution())
+    # print("AVERAGE Sidewinder Solution Path Cells: ", test.avg_cell_solution())
+    # print("AVERAGE Kruskal Solution Path Cells: ", test.avg_cell_solution())
+    # print("AVERAGE Recursive Solution Path Cells: ", test.avg_cell_solution())
+    print("AVERAGE Wilson Solution Path Cells: ", test.avg_cell_solution())
 
     # print("Average Solution Straightaways: ", test.avg_solution_straightaways())
     # print("Average Solution Turns: ", test.avg_solution_turns())
-    print("Average Solution Crossroads: ", test.avg_solution_crossroads())
-    print("Average Solution T-junctions: ", test.avg_solution_tjunctions())
-    print("Average Solution Terminals: ", test.avg_solution_terminals())
+    # print("Average Solution Crossroads: ", test.avg_solution_crossroads())
+    # print("Average Solution T-junctions: ", test.avg_solution_tjunctions())
+    # print("Average Solution Terminals: ", test.avg_solution_terminals())
