@@ -23,12 +23,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -45,12 +45,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -67,12 +67,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -89,12 +89,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -111,12 +111,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -134,12 +134,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -158,12 +158,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -182,12 +182,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -206,12 +206,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -230,12 +230,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -367,36 +367,42 @@ class TestMethods():
     def average_binary_time(self):
         time = 0
         for i in range(50):
+            self.grid = Grid(30, 20)
             time += self.time_binary()
         return time / 50
 
     def average_sidewinder_time(self):
         time = 0
         for i in range(50):
+            self.grid = Grid(30, 20)
             time += self.time_sidewinder()
         return time / 50
 
     def average_prim_time(self):
         time = 0
         for i in range(50):
+            self.grid = Grid(30, 20)
             time += self.time_prim()
         return time / 50
 
     def average_kruskal_time(self):
         time = 0
         for i in range(50):
+            self.grid = Grid(30, 20)
             time += self.time_kruskal()
         return time / 50
 
     def average_wilson_time(self):
         time = 0
         for i in range(50):
+            self.grid = Grid(30, 20)
             time += self.time_wilson()
         return time / 50
 
     def average_recursive_time(self):
         time = 0
         for i in range(50):
+            self.grid = Grid(30, 20)
             time += self.time_recursive()
         return time / 50
 
@@ -442,12 +448,12 @@ class TestMethods():
 
             # Sidewinder().generate(g)
 
-            # Prim().generate(g)
+            Prim().generate(g)
 
             # kruskal = Kruskal(g)
             # kruskal.generate(g)
 
-            Wilson().generate(g)
+            # Wilson().generate(g)
 
             # Recursive().generate(g)
 
@@ -472,15 +478,24 @@ if __name__ == '__main__':
     # print("Average Kruskal Time: ", test.average_kruskal_time())
     # print("Average Recursive Time: ", test.average_recursive_time())
     # print("Average Wilson Time: ", test.average_wilson_time())
+    # print("Average Prim Time: ", test.average_prim_time())
+
+    # print("Average Straightaways: ", test.average_straightaways())
+    # print("Average Turns: ", test.average_turns())
+    # print("Average Crossroads: ", test.average_crossroads())
+    # print("Average T-junctions: ", test.average_tjunctions())
+    # print("Average Terminals: ", test.average_terminals())
 
     # print("AVERAGE Binary Tree Solution Path Cells: ", test.avg_cell_solution())
     # print("AVERAGE Sidewinder Solution Path Cells: ", test.avg_cell_solution())
     # print("AVERAGE Kruskal Solution Path Cells: ", test.avg_cell_solution())
     # print("AVERAGE Recursive Solution Path Cells: ", test.avg_cell_solution())
-    print("AVERAGE Wilson Solution Path Cells: ", test.avg_cell_solution())
+    # print("AVERAGE Wilson Solution Path Cells: ", test.avg_cell_solution())
+    print("AVERAGE Prim Solution Path Cells: ", test.avg_cell_solution())
 
-    # print("Average Solution Straightaways: ", test.avg_solution_straightaways())
-    # print("Average Solution Turns: ", test.avg_solution_turns())
-    # print("Average Solution Crossroads: ", test.avg_solution_crossroads())
-    # print("Average Solution T-junctions: ", test.avg_solution_tjunctions())
-    # print("Average Solution Terminals: ", test.avg_solution_terminals())
+    print("Average Solution Straightaways: ", test.avg_solution_straightaways())
+    print("Average Solution Turns: ", test.avg_solution_turns())
+    print("Average Solution Crossroads: ", test.avg_solution_crossroads())
+    print("Average Solution T-junctions: ", test.avg_solution_tjunctions())
+    print("Average Solution Terminals: ", test.avg_solution_terminals())
+
