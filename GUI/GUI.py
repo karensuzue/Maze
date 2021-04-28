@@ -44,6 +44,7 @@ class GUI:
         self.algorithms = {"Binary Tree": 1,
                            "Sidewinder": 2,
                            "Kruskal's": 3,
+                           "Prim's": 4,
                            "Recursive Backtracker": 5,
                            "Wilson's": 6}
         self.v_algorithm = IntVar()
@@ -279,8 +280,8 @@ class GUI:
             kruskal = Kruskal(self.grid)
             kruskal.generate(self.grid)
 
-        # if self.v_algorithm.get() == 4:
-            # Prim().generate(self.grid)
+        if self.v_algorithm.get() == 4:
+            Prim().generate(self.grid)
 
         if self.v_algorithm.get() == 5:
             Recursive().generate(self.grid)

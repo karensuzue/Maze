@@ -9,7 +9,7 @@ from algorithms.recursive import Recursive
 from image_export.to_png import ToPNG
 
 def main():
-    grid = Grid(5, 5)
+    grid = Grid(20, 30)
 
     # BinaryTree().generate(grid)
     # print("Binary Tree Algorithm:")
@@ -17,7 +17,7 @@ def main():
     # Sidewinder().generate(grid)
     # print("Sidewinder Algorithm: ")
 
-    Prim().generate2(grid)
+    Prim().generate(grid)
     print("Prim's Algorithm: ")
 
     # Wilson().generate(grid)
