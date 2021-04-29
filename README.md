@@ -1,5 +1,5 @@
 # Maze Generator
-Junior I.S project at the College of Wooster. Algorithms are taken from Jamis Buck's Mazes for Programmers. 
+Junior I.S project at the College of Wooster. Most algorithms are heavily referenced from Jamis Buck's Mazes for Programmers. 
 
 ## To do list
 * Remove Prim's Algorithm from GUI
