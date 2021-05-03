@@ -5,6 +5,11 @@ from grid import Cell
 
 class Recursive():
     def generate(self, grid):
+        """
+        Generate a maze given a grid of cells.
+        :param grid: a Grid object
+        :return: a generated maze
+        """
         stack = []
         # Start at Southwest corner
         start = grid.random_cell()

@@ -5,6 +5,11 @@ from grid import Cell
 
 class Wilson():
     def generate(self, grid):
+        """
+        Generate a maze given a grid of cells.
+        :param grid: a Grid object
+        :return: a generated maze
+        """
         unvisited = []
         for r in range(grid.rows):
             for c in range(grid.cols):

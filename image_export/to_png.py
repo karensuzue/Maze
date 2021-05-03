@@ -17,8 +17,10 @@ class ToPNG():
         self.dark_bg_color = ()
 
     def render_path(self):
-        # Renders the solution path
-
+        """
+        Obtain and renders the solution path
+        :return: a list of solution path cells
+        """
         # Start solving from the southwest corner
         distance_map = Dijkstra()
         distance_map.solve(self.grid, self.grid.rows - 1, 0)
@@ -95,6 +97,10 @@ class ToPNG():
         return solution_path
 
     def render(self):
+        """
+        Render a plain maze.
+        :return: an image of a maze
+        """
         canvas = Image.new('RGB', self.image_size, self.bg_color)
         draw = ImageDraw.Draw(canvas)
 
@@ -137,6 +143,10 @@ class ToPNG():
         return canvas
 
     def render_color(self):
+        """
+        Render a colored bias map.
+        :return: an image of a colored maze
+        """
         canvas = Image.new('RGB', self.image_size, self.bg_color)
         draw = ImageDraw.Draw(canvas)
 
@@ -200,8 +210,10 @@ class ToPNG():
         return canvas
 
     def render_path2(self):
-        # Renders the solution path
-
+        """
+        Obtain the solution path without rendering.
+        :return: a list of cells in solution path
+        """
         # Start solving from the southwest corner
         distance_map = Dijkstra()
         distance_map.solve(self.grid, self.grid.rows - 1, 0)

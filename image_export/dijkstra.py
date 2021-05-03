@@ -15,6 +15,13 @@ class Dijkstra():
         self.distances = None
 
     def solve(self, grid, row, col):
+        """
+        Solve a maze.
+        :param grid: a Grid object representing the maze
+        :param row: the row index of the starting cell
+        :param col: the column index of the starting cell
+        :return: each cell in maze is given a distance value
+        """
         start = grid.grid[row][col]
         start.distance = 1
         self.distances = Distance(start)
@@ -35,6 +42,11 @@ class Dijkstra():
             frontier = new_frontier
 
     def color_for_cell(self, cell):
+        """
+        Obtain RGB decimal code to color cell.
+        :param cell: a Cell object from the grid/maze
+        :return: an RGB decimal code
+        """
         if cell in self.distances.cells:
             distance = self.distances.cells[cell]
             maximum = max(self.distances.cells.values())

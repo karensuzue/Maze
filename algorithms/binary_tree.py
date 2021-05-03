@@ -6,6 +6,11 @@ from grid import Cell
 class BinaryTree():
     # Binary tree algorithm with Northeast bias. Starts from Southwest corner.
     def generate(self, grid):
+        """
+        Generate a maze given a grid of cells.
+        :param grid: a Grid object
+        :return: a generated maze
+        """
         g = grid.grid
         for r in range(grid.rows - 1, -1, -1):
             for c in range(grid.cols):

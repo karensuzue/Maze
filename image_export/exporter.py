@@ -11,7 +11,7 @@ from algorithms.wilsons import Wilson
 from algorithms.recursive import Recursive
 
 def export():
-    grid = Grid(30, 20)
+    grid = Grid(5, 5)
 
     BinaryTree().generate(grid)
 
@@ -27,13 +27,13 @@ def export():
     # Recursive().generate(grid)
 
     render = ToPNG(grid, 20)
-    # image = render.render()
+    image = render.render()
     # image2 = render.render_color()
 
-    path = render.render_path()
-    print(path)
-    for i in range(len(path)):
-        print(path[i].distance)
+    # path = render.render_path()
+    # print(path)
+    # for i in range(len(path)):
+        # print(path[i].distance)
 
 
 if __name__ == '__main__':

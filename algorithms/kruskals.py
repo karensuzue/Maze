@@ -31,11 +31,24 @@ class Kruskal():
                 self.find_cells[subset] = subset.cells
 
     def can_merge(self, left, right):
+        """
+        Check if the subsets of the two cells can be merged.
+        :param left: a Cell object
+        :param right: a Cell object
+        :return: True if cells belong to different subsets, otherwise False
+        """
         if self.find_subset[left] != self.find_subset[right]:
             return True
         return False
 
     def merge(self, left, right):
+        """
+        Merge subsets of two cells.
+        :param left: a Cell object
+        :param right: a Cell object
+        :return: a subset containing both its original contents as well as
+        that of the other set
+        """
         left.link(right)
 
         winner = self.find_subset[left]
@@ -50,6 +63,11 @@ class Kruskal():
         self.find_cells.pop(loser)
 
     def generate(self, grid):
+        """
+        Generate a maze given a grid of cells.
+        :param grid: a Grid object
+        :return: a generated maze
+        """
         while len(self.edges) > 0:
             random_edge = random.choice(self.edges)
             self.edges.remove(random_edge)

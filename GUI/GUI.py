@@ -85,6 +85,10 @@ class GUI:
         self.reset_button.pack()
 
     def get_attributes(self):
+        """
+        Create "Maze Attributes" window.
+        :return: a new window
+        """
         # New window
         new_window = Toplevel(self.master)
         new_window.title("Maze Attributes")
@@ -136,6 +140,11 @@ class GUI:
 
 
     def get_straightaways_solution(self, arr):
+        """
+        Obtain number of straightaway cells for the solution path.
+        :param arr: an array of solution path cells
+        :return: the number of straightaway cells in the solution path
+        """
         straightaways = 0
         for i in range(len(arr)):
             cell = arr[i]
@@ -157,6 +166,11 @@ class GUI:
         return straightaways
 
     def get_turns_solution(self, arr):
+        """
+        Obtain number of turn cells for the solution path.
+        :param arr: an array of solution path cells
+        :return: the number of turn cells in the solution path
+        """
         turns = 0
         for i in range(len(arr)):
             cell = arr[i]
@@ -182,6 +196,11 @@ class GUI:
         return turns
 
     def get_crossroads_solution(self, arr):
+        """
+        Obtain number of crossroad cells for the solution path.
+        :param arr: an array of solution path cells
+        :return: the number of crossroad cells in the solution path
+        """
         crossroads = 0
         for i in range(len(arr)):
             cell = arr[i]
@@ -197,6 +216,11 @@ class GUI:
         return crossroads
 
     def get_tjunctions_solution(self, arr):
+        """
+        Obtain number of T-junction cells for the solution path.
+        :param arr: an array of solution path cells
+        :return: the number of T-junction cells in the solution path
+        """
         junctions = 0
         for i in range(len(arr)):
             cell = arr[i]
@@ -222,6 +246,11 @@ class GUI:
         return junctions
 
     def get_terminals_solution(self, arr):
+        """
+        Obtain number of terminal cells for the solution path.
+        :param arr: an array of solution path cells
+        :return: the number of terminal cells in the solution path
+        """
         terminal = 0
         for i in range(len(arr)):
             cell = arr[i]
@@ -253,6 +282,10 @@ class GUI:
         return terminal
 
     def image_load(self):
+        """
+        Load an image depending on the selected rendering option.
+        :return: an ImageTk.PhotoImage object
+        """
         if self.v_render.get() == 1:
             image = Image.open("maze.png")
             return ImageTk.PhotoImage(image)
@@ -266,9 +299,17 @@ class GUI:
             return ImageTk.PhotoImage(image)
 
     def reset(self):
+        """
+        Reset maze to a plain grid.
+        :return: a Grid object
+        """
         self.grid = Grid(GRID_ROW, GRID_COL)
 
     def generate(self):
+        """
+        Generate and display the maze.
+        :return: a new window displaying the rendered maze
+        """
         # Algorithm choice
         if self.v_algorithm.get() == 1:
             BinaryTree().generate(self.grid)
