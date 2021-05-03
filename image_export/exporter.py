@@ -11,9 +11,9 @@ from algorithms.wilsons import Wilson
 from algorithms.recursive import Recursive
 
 def export():
-    grid = Grid(5, 5)
+    grid = Grid(30, 20)
 
-    BinaryTree().generate(grid)
+    # BinaryTree().generate(grid)
 
     # Sidewinder().generate(grid)
 
@@ -24,7 +24,7 @@ def export():
     # kruskal = Kruskal(grid)
     # kruskal.generate(grid)
 
-    # Recursive().generate(grid)
+    Recursive().generate(grid)
 
     render = ToPNG(grid, 20)
     image = render.render()
