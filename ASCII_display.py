@@ -9,7 +9,7 @@ from algorithms.recursive import Recursive
 from image_export.to_png import ToPNG
 
 def main():
-    grid = Grid(20, 30)
+    grid = Grid(10, 10)
 
     # BinaryTree().generate(grid)
     # print("Binary Tree Algorithm:")
