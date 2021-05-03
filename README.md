@@ -19,9 +19,11 @@ Junior I.S project at the College of Wooster. Most algorithms are heavily refere
 
 ## Features
 ### ASCII Printing
+![Image](https://github.com/karensuzue/Maze/blob/main/image_export/ascii.png)
 ### Render as Image
 ![Image](https://github.com/karensuzue/Maze/blob/main/image_export/maze.png)
 ### Render with Solution Path
+![Image](https://github.com/karensuzue/Maze/blob/main/image_export/maze-solution.png)
 ### Colored Bias Map
 ![Image](https://github.com/karensuzue/Maze/blob/main/image_export/maze-colored.png)
 
